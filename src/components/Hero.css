@@ -92,6 +92,41 @@
   background-clip: text;
 }
 
+.cursor {
+  color: #dc2626;
+  animation: blink 1s infinite;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.morphing-title {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.1s ease;
+}
+
+.morphing-title.animating {
+  animation: morphing-glow 0.1s ease-in-out infinite alternate;
+}
+
+@keyframes morphing-glow {
+  0% {
+    text-shadow: 
+      0 0 5px rgba(107, 70, 193, 0.5),
+      0 0 10px rgba(220, 38, 38, 0.3);
+  }
+  100% {
+    text-shadow: 
+      0 0 10px rgba(107, 70, 193, 0.8),
+      0 0 20px rgba(220, 38, 38, 0.5);
+  }
+}
+
 .hero-subtitle {
   font-size: 1.5rem;
   font-weight: 500;

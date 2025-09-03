@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCode, FaRocket, FaLightbulb, FaUsers } from 'react-icons/fa';
+import InteractiveMap from './InteractiveMap';
 import './About.css';
 
 const About = () => {
@@ -80,6 +81,9 @@ const About = () => {
                 <p>Technologies Learned</p>
               </div>
             </div>
+            
+            <InteractiveMap />
+
           </motion.div>
 
           <motion.div

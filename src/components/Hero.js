@@ -21,6 +21,107 @@ const Hero = () => {
 
   const [currentTechSet, setCurrentTechSet] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [displayedName, setDisplayedName] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [displayedTitle, setDisplayedTitle] = useState('');
+  const [isTitleAnimating, setIsTitleAnimating] = useState(false);
+
+  // Enhanced typewriter effect for name - writes, deletes, and rewrites
+  useEffect(() => {
+    const fullName = "Abdullah Shibib";
+    let currentIndex = 0;
+    let isDeletingPhase = false;
+    let isPaused = false;
+    
+    const typeInterval = setInterval(() => {
+      if (!isPaused) {
+        if (!isDeletingPhase) {
+          // Typing phase
+          if (currentIndex < fullName.length) {
+            setDisplayedName(fullName.slice(0, currentIndex + 1));
+            currentIndex++;
+          } else {
+            // Finished typing, pause then start deleting
+            isPaused = true;
+            setTimeout(() => {
+              isDeletingPhase = true;
+              isPaused = false;
+            }, 2000); // Pause for 2 seconds
+          }
+        } else {
+          // Deleting phase
+          if (currentIndex > 0) {
+            currentIndex--;
+            setDisplayedName(fullName.slice(0, currentIndex));
+          } else {
+            // Finished deleting, pause then start typing again
+            isPaused = true;
+            setTimeout(() => {
+              isDeletingPhase = false;
+              isPaused = false;
+            }, 1000); // Pause for 1 second
+          }
+        }
+      }
+    }, isDeletingPhase ? 100 : 150); // Faster deletion, normal typing speed
+    
+    return () => clearInterval(typeInterval);
+  }, []);
+
+  // Morphing animation for title
+  useEffect(() => {
+    const targetTitle = "Software Engineer at Ericsson";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+    let animationFrame;
+    let startTime;
+    
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      
+      if (elapsed < 2000) { // Scrambling phase (2 seconds)
+        let scrambled = '';
+        for (let i = 0; i < targetTitle.length; i++) {
+          if (targetTitle[i] === ' ') {
+            scrambled += ' ';
+          } else {
+            scrambled += characters[Math.floor(Math.random() * characters.length)];
+          }
+        }
+        setDisplayedTitle(scrambled);
+        animationFrame = requestAnimationFrame(animate);
+      } else if (elapsed < 3000) { // Morphing phase (1 second)
+        const morphProgress = (elapsed - 2000) / 1000;
+        let morphed = '';
+        for (let i = 0; i < targetTitle.length; i++) {
+          if (Math.random() < morphProgress) {
+            morphed += targetTitle[i];
+          } else {
+            morphed += characters[Math.floor(Math.random() * characters.length)];
+          }
+        }
+        setDisplayedTitle(morphed);
+        animationFrame = requestAnimationFrame(animate);
+      } else { // Final state
+        setDisplayedTitle(targetTitle);
+        setIsTitleAnimating(false);
+      }
+    };
+    
+    // Start animation after name typewriter completes
+    const timer = setTimeout(() => {
+      setIsTitleAnimating(true);
+      animationFrame = requestAnimationFrame(animate);
+    }, 3000);
+    
+    return () => {
+      clearTimeout(timer);
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -66,7 +167,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Hi, I'm Abdullah Shibib
+              Hi, I'm {displayedName}
+              <span className="cursor">|</span>
             </motion.h1>
             
             <motion.p
@@ -75,7 +177,9 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Innovative IT Student | Tech Enthusiast & Problem Solver
+              <span className={`morphing-title ${isTitleAnimating ? 'animating' : ''}`}>
+                {displayedTitle}
+              </span>
             </motion.p>
             
             <motion.p
