@@ -5,9 +5,9 @@ import './Hero.css';
 
 const Hero = () => {
   const socialLinks = [
-    { icon: FaGithub, href: 'https://github.com/Abdullah-Shibib', label: 'GitHub' },
-    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/abdullah-shibib-5875a1297/', label: 'LinkedIn' },
-    { icon: FaEnvelope, href: 'mailto:abdullahshibib@yahoo.com', label: 'Email' },
+    { icon: FaGithub, href: 'https://github.com/YOUR_USERNAME', label: 'GitHub' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/YOUR_LINKEDIN_ID/', label: 'LinkedIn' },
+    { icon: FaEnvelope, href: 'mailto:your.email@example.com', label: 'Email' },
   ];
 
   // Technology rotation arrays

@@ -7,9 +7,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: FaGithub, href: 'https://github.com/Abdullah-Shibib', label: 'GitHub' },
-    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/abdullah-shibib-5875a1297/', label: 'LinkedIn' },
-    { icon: FaEnvelope, href: 'mailto:abdullahshibib@yahoo.com', label: 'Email' },
+    { icon: FaGithub, href: 'https://github.com/YOUR_USERNAME', label: 'GitHub' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/YOUR_LINKEDIN_ID/', label: 'LinkedIn' },
+    { icon: FaEnvelope, href: 'mailto:your.email@example.com', label: 'Email' },
   ];
 
   const quickLinks = [
@@ -104,11 +104,11 @@ const Footer = () => {
             <div className="contact-info">
               <p>
                 <FaEnvelope />
-                abdullahshibib@yahoo.com
+                your.email@example.com
               </p>
               <p>
                 <span>📍</span>
-                Ottawa, ON, Canada
+                Your City, Your State, Your Country
               </p>
             </div>
           </motion.div>
