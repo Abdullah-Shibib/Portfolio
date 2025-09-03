@@ -144,7 +144,7 @@ const Hero = () => {
                   <div className="central-element">
                     <div className="profile-photo-container">
                       <img 
-                        src="/profile-photo.png" 
+                        src="/images/profile-photo.png" 
                         alt="Abdullah Shibib" 
                         className="profile-photo"
                       />
