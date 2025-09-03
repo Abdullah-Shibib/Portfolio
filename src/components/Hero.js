@@ -16,7 +16,7 @@ const Hero = () => {
     ['PyTorch', 'AWS', 'Git', 'MySQL'],
     ['Pandas', 'Flask', 'PostgreSQL', 'Jenkins'],
     ['scikit-learn', 'Django', 'MongoDB', 'Kubernetes'],
-    ['Matplotlib', 'Express', 'Redis', 'Nginx']
+    ['Matplotlib', 'Power BI', 'Vercel', 'Postman']
   ];
 
   const [currentTechSet, setCurrentTechSet] = useState(0);
@@ -29,10 +29,9 @@ const Hero = () => {
         setCurrentTechSet((prev) => (prev + 1) % techSets.length);
         setTimeout(() => {
           setIsAnimating(false);
-        }, 200);
-      }, 400);
+        }, 100); // Faster reset delay
+      }, 300); // Faster tech set change delay
     }, 4000);
-
     return () => clearInterval(interval);
   }, [techSets.length]);
 
@@ -159,11 +158,12 @@ const Hero = () => {
                       initial={{ scale: 0, opacity: 0, rotate: -180 }}
                       animate={{ scale: 1, opacity: 1, rotate: 0 }}
                       transition={{ 
-                        duration: 0.6, 
-                        delay: 0.1,
+                        duration: 0.8, 
+                        delay: 0.05,
                         type: "spring",
-                        stiffness: 200,
-                        damping: 15
+                        stiffness: 150,
+                        damping: 20,
+                        ease: [0.25, 0.46, 0.45, 0.94]
                       }}
                     >
                       {techSets[currentTechSet][0]}
@@ -174,11 +174,12 @@ const Hero = () => {
                       initial={{ scale: 0, opacity: 0, rotate: 180 }}
                       animate={{ scale: 1, opacity: 1, rotate: 0 }}
                       transition={{ 
-                        duration: 0.6, 
-                        delay: 0.2,
+                        duration: 0.8, 
+                        delay: 0.1,
                         type: "spring",
-                        stiffness: 200,
-                        damping: 15
+                        stiffness: 150,
+                        damping: 20,
+                        ease: [0.25, 0.46, 0.45, 0.94]
                       }}
                     >
                       {techSets[currentTechSet][1]}
@@ -189,11 +190,12 @@ const Hero = () => {
                       initial={{ scale: 0, opacity: 0, rotate: -90 }}
                       animate={{ scale: 1, opacity: 1, rotate: 0 }}
                       transition={{ 
-                        duration: 0.6, 
-                        delay: 0.3,
+                        duration: 0.8, 
+                        delay: 0.15,
                         type: "spring",
-                        stiffness: 200,
-                        damping: 15
+                        stiffness: 150,
+                        damping: 20,
+                        ease: [0.25, 0.46, 0.45, 0.94]
                       }}
                     >
                       {techSets[currentTechSet][2]}
@@ -204,11 +206,12 @@ const Hero = () => {
                       initial={{ scale: 0, opacity: 0, rotate: 90 }}
                       animate={{ scale: 1, opacity: 1, rotate: 0 }}
                       transition={{ 
-                        duration: 0.6, 
-                        delay: 0.4,
+                        duration: 0.8, 
+                        delay: 0.2,
                         type: "spring",
-                        stiffness: 200,
-                        damping: 15
+                        stiffness: 150,
+                        damping: 20,
+                        ease: [0.25, 0.46, 0.45, 0.94]
                       }}
                     >
                       {techSets[currentTechSet][3]}
