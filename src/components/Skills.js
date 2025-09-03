@@ -22,28 +22,28 @@ const Skills = () => {
     {
       title: 'Programming Languages',
       skills: [
-        { name: 'Python', icon: FaPython, proficiency: 'Advanced', color: '#3776ab' },
-        { name: 'JavaScript', icon: FaJs, proficiency: 'Intermediate', color: '#f7df1e' },
-        { name: 'TypeScript', icon: FaJs, proficiency: 'Learning', color: '#3178c6' },
-        { name: 'C/C++', icon: FaCode, proficiency: 'Intermediate', color: '#00599c' },
+        { name: 'Python', icon: FaPython, color: '#3776ab' },
+        { name: 'JavaScript', icon: FaJs, color: '#f7df1e' },
+        { name: 'TypeScript', icon: FaJs, color: '#3178c6' },
+        { name: 'C/C++', icon: FaCode, color: '#00599c' },
       ]
     },
     {
       title: 'Web Development',
       skills: [
-        { name: 'React', icon: FaReact, proficiency: 'Intermediate', color: '#61dafb' },
-        { name: 'HTML5', icon: FaHtml5, proficiency: 'Advanced', color: '#e34f26' },
-        { name: 'CSS3', icon: FaCss3Alt, proficiency: 'Advanced', color: '#1572b6' },
-        { name: 'Node.js', icon: FaNodeJs, proficiency: 'Learning', color: '#339933' },
+        { name: 'React', icon: FaReact, color: '#61dafb' },
+        { name: 'HTML5', icon: FaHtml5, color: '#e34f26' },
+        { name: 'CSS3', icon: FaCss3Alt, color: '#1572b6' },
+        { name: 'Node.js', icon: FaNodeJs, color: '#339933' },
       ]
     },
     {
       title: 'AI & Data Science',
       skills: [
-        { name: 'PyTorch', icon: FaCode, proficiency: 'Learning', color: '#ee4c2c' },
-        { name: 'TensorFlow', icon: FaCode, proficiency: 'Learning', color: '#ff6f00' },
-        { name: 'Pandas', icon: FaCode, proficiency: 'Intermediate', color: '#150458' },
-        { name: 'OpenCV', icon: FaCode, proficiency: 'Learning', color: '#5c3ee8' },
+        { name: 'PyTorch', icon: FaCode, color: '#ee4c2c' },
+        { name: 'TensorFlow', icon: FaCode, color: '#ff6f00' },
+        { name: 'Pandas', icon: FaCode, color: '#150458' },
+        { name: 'OpenCV', icon: FaCode, color: '#5c3ee8' },
       ]
     }
   ];
@@ -89,7 +89,12 @@ const Skills = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: (categoryIndex * 0.2) + (skillIndex * 0.1), duration: 0.5 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 1.05, rotateY: 5 }}
+                    whileHover={{ 
+                      scale: 1.1, 
+                      rotateY: 10,
+                      rotateX: 5,
+                      z: 50
+                    }}
                     style={{ '--skill-color': skill.color }}
                   >
                     <div className="skill-icon">
@@ -97,33 +102,11 @@ const Skills = () => {
                     </div>
                     <div className="skill-info">
                       <h4>{skill.name}</h4>
-                      <div className="proficiency-indicator">
-                        <div className={`proficiency-badge ${skill.proficiency.toLowerCase()}`}>
-                          {skill.proficiency}
-                        </div>
-                        <div className="proficiency-dots">
-                          {skill.proficiency === 'Advanced' && (
-                            <>
-                              <div className="dot active"></div>
-                              <div className="dot active"></div>
-                              <div className="dot active"></div>
-                            </>
-                          )}
-                          {skill.proficiency === 'Intermediate' && (
-                            <>
-                              <div className="dot active"></div>
-                              <div className="dot active"></div>
-                              <div className="dot"></div>
-                            </>
-                          )}
-                          {skill.proficiency === 'Learning' && (
-                            <>
-                              <div className="dot active"></div>
-                              <div className="dot"></div>
-                              <div className="dot"></div>
-                            </>
-                          )}
-                        </div>
+                      <div className="skill-effects">
+                        <div className="glow-effect"></div>
+                        <div className="particle particle-1"></div>
+                        <div className="particle particle-2"></div>
+                        <div className="particle particle-3"></div>
                       </div>
                     </div>
                   </motion.div>
@@ -146,11 +129,22 @@ const Skills = () => {
               <motion.span
                 key={tech}
                 className="tech-tag"
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1 + (index * 0.05), duration: 0.3 }}
+                initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ 
+                  delay: 1 + (index * 0.05), 
+                  duration: 0.5,
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 15
+                }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ 
+                  scale: 1.2, 
+                  rotate: 5,
+                  y: -5
+                }}
+                whileTap={{ scale: 0.9 }}
               >
                 {tech}
               </motion.span>

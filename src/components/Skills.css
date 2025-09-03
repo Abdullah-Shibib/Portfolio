@@ -22,114 +22,139 @@
   gap: 1.5rem;
 }
 
+
+
 .skill-item {
   background: var(--bg-secondary);
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .skill-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--red-accent);
-  box-shadow: 0 10px 25px rgba(220, 38, 38, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: var(--skill-color);
+  box-shadow: 0 20px 40px var(--skill-color);
 }
 
 .skill-icon {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background: var(--skill-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
 }
 
 .skill-item:hover .skill-icon {
-  transform: rotate(360deg);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 12px 30px var(--skill-color);
 }
 
 .skill-info {
   flex: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .skill-info h4 {
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
-}
-
-.proficiency-indicator {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.proficiency-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 15px;
-  font-size: 0.75rem;
+  margin-bottom: 0;
+  font-size: 1.2rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  width: fit-content;
-}
-
-.proficiency-badge.advanced {
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
-}
-
-.proficiency-badge.intermediate {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  color: white;
-}
-
-.proficiency-badge.learning {
-  background: linear-gradient(135deg, #6b46c1, #4a1a5c);
-  color: white;
-}
-
-.proficiency-dots {
-  display: flex;
-  gap: 0.25rem;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--border-color);
   transition: all 0.3s ease;
 }
 
-.dot.active {
-  background: var(--skill-color);
-  box-shadow: 0 0 8px var(--skill-color);
-  animation: pulse 2s infinite;
+.skill-item:hover .skill-info h4 {
+  color: var(--skill-color);
+  transform: translateX(5px);
 }
 
-@keyframes pulse {
+.skill-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glow-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--skill-color), transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.skill-item:hover .glow-effect {
+  width: 200px;
+  height: 200px;
+  opacity: 0.1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--skill-color);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.particle-1 {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  top: 60%;
+  right: 20%;
+  animation-delay: 0.2s;
+}
+
+.particle-3 {
+  bottom: 20%;
+  left: 60%;
+  animation-delay: 0.4s;
+}
+
+.skill-item:hover .particle {
+  opacity: 1;
+  animation: float-particle 2s ease-in-out infinite;
+}
+
+@keyframes float-particle {
   0%, 100% {
-    opacity: 1;
-    transform: scale(1);
+    transform: translateY(0px) scale(1);
   }
   50% {
-    opacity: 0.7;
-    transform: scale(1.1);
+    transform: translateY(-20px) scale(1.2);
   }
 }
 
@@ -155,20 +180,37 @@
 .tech-tag {
   background: var(--bg-secondary);
   color: var(--text-primary);
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 25px;
   font-size: 0.875rem;
   font-weight: 500;
   border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-  cursor: default;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.tech-tag:hover::before {
+  left: 100%;
 }
 
 .tech-tag:hover {
-  background: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--red-accent));
   color: white;
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
+  border-color: var(--red-accent);
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
 }
 
 @media (max-width: 768px) {
