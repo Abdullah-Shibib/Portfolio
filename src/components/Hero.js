@@ -27,9 +27,11 @@ const Hero = () => {
       setIsAnimating(true);
       setTimeout(() => {
         setCurrentTechSet((prev) => (prev + 1) % techSets.length);
-        setIsAnimating(false);
-      }, 300);
-    }, 3000);
+        setTimeout(() => {
+          setIsAnimating(false);
+        }, 200);
+      }, 400);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [techSets.length]);
@@ -83,7 +85,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              Third-year IT Student at Carleton University & Algonquin College. 
+              Third-year IT Student at Carleton University. 
               Passionate about AI, machine learning, and building innovative solutions that make a difference.
             </motion.p>
             
@@ -154,36 +156,60 @@ const Hero = () => {
                     <motion.div 
                       className={`tech-element tech-1 ${isAnimating ? 'bubble-pop' : ''}`}
                       key={`tech-1-${currentTechSet}`}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: 0.1 }}
+                      initial={{ scale: 0, opacity: 0, rotate: -180 }}
+                      animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                      transition={{ 
+                        duration: 0.6, 
+                        delay: 0.1,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 15
+                      }}
                     >
                       {techSets[currentTechSet][0]}
                     </motion.div>
                     <motion.div 
                       className={`tech-element tech-2 ${isAnimating ? 'bubble-pop' : ''}`}
                       key={`tech-2-${currentTechSet}`}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: 0.2 }}
+                      initial={{ scale: 0, opacity: 0, rotate: 180 }}
+                      animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                      transition={{ 
+                        duration: 0.6, 
+                        delay: 0.2,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 15
+                      }}
                     >
                       {techSets[currentTechSet][1]}
                     </motion.div>
                     <motion.div 
                       className={`tech-element tech-3 ${isAnimating ? 'bubble-pop' : ''}`}
                       key={`tech-3-${currentTechSet}`}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: 0.3 }}
+                      initial={{ scale: 0, opacity: 0, rotate: -90 }}
+                      animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                      transition={{ 
+                        duration: 0.6, 
+                        delay: 0.3,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 15
+                      }}
                     >
                       {techSets[currentTechSet][2]}
                     </motion.div>
                     <motion.div 
                       className={`tech-element tech-4 ${isAnimating ? 'bubble-pop' : ''}`}
                       key={`tech-4-${currentTechSet}`}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: 0.4 }}
+                      initial={{ scale: 0, opacity: 0, rotate: 90 }}
+                      animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                      transition={{ 
+                        duration: 0.6, 
+                        delay: 0.4,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 15
+                      }}
                     >
                       {techSets[currentTechSet][3]}
                     </motion.div>

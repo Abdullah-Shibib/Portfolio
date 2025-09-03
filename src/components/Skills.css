@@ -44,7 +44,7 @@
 .skill-icon {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, var(--primary-color), var(--red-accent));
+  background: var(--skill-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -52,7 +52,13 @@
   color: white;
   font-size: 1.5rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+  transform: rotate(360deg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .skill-info {
@@ -61,30 +67,70 @@
 
 .skill-info h4 {
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   font-size: 1.1rem;
 }
 
-.skill-bar {
-  width: 100%;
+.proficiency-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.proficiency-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: fit-content;
+}
+
+.proficiency-badge.advanced {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.proficiency-badge.intermediate {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.proficiency-badge.learning {
+  background: linear-gradient(135deg, #6b46c1, #4a1a5c);
+  color: white;
+}
+
+.proficiency-dots {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.dot {
+  width: 8px;
   height: 8px;
+  border-radius: 50%;
   background: var(--border-color);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
 }
 
-.skill-progress {
-  height: 100%;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  border-radius: 4px;
-  transition: width 1s ease;
+.dot.active {
+  background: var(--skill-color);
+  box-shadow: 0 0 8px var(--skill-color);
+  animation: pulse 2s infinite;
 }
 
-.skill-percentage {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  font-weight: 500;
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
 }
 
 .technologies-section {

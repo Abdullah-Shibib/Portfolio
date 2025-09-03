@@ -22,28 +22,28 @@ const Skills = () => {
     {
       title: 'Programming Languages',
       skills: [
-        { name: 'Python', icon: FaPython, level: 65 },
-        { name: 'JavaScript', icon: FaJs, level: 60 },
-        { name: 'TypeScript', icon: FaJs, level: 45 },
-        { name: 'C/C++', icon: FaCode, level: 55 },
+        { name: 'Python', icon: FaPython, proficiency: 'Advanced', color: '#3776ab' },
+        { name: 'JavaScript', icon: FaJs, proficiency: 'Intermediate', color: '#f7df1e' },
+        { name: 'TypeScript', icon: FaJs, proficiency: 'Learning', color: '#3178c6' },
+        { name: 'C/C++', icon: FaCode, proficiency: 'Intermediate', color: '#00599c' },
       ]
     },
     {
       title: 'Web Development',
       skills: [
-        { name: 'React', icon: FaReact, level: 60 },
-        { name: 'HTML5', icon: FaHtml5, level: 70 },
-        { name: 'CSS3', icon: FaCss3Alt, level: 65 },
-        { name: 'Node.js', icon: FaNodeJs, level: 50 },
+        { name: 'React', icon: FaReact, proficiency: 'Intermediate', color: '#61dafb' },
+        { name: 'HTML5', icon: FaHtml5, proficiency: 'Advanced', color: '#e34f26' },
+        { name: 'CSS3', icon: FaCss3Alt, proficiency: 'Advanced', color: '#1572b6' },
+        { name: 'Node.js', icon: FaNodeJs, proficiency: 'Learning', color: '#339933' },
       ]
     },
     {
       title: 'AI & Data Science',
       skills: [
-        { name: 'PyTorch', icon: FaCode, level: 50 },
-        { name: 'TensorFlow', icon: FaCode, level: 45 },
-        { name: 'Pandas', icon: FaCode, level: 60 },
-        { name: 'OpenCV', icon: FaCode, level: 55 },
+        { name: 'PyTorch', icon: FaCode, proficiency: 'Learning', color: '#ee4c2c' },
+        { name: 'TensorFlow', icon: FaCode, proficiency: 'Learning', color: '#ff6f00' },
+        { name: 'Pandas', icon: FaCode, proficiency: 'Intermediate', color: '#150458' },
+        { name: 'OpenCV', icon: FaCode, proficiency: 'Learning', color: '#5c3ee8' },
       ]
     }
   ];
@@ -89,23 +89,42 @@ const Skills = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: (categoryIndex * 0.2) + (skillIndex * 0.1), duration: 0.5 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, rotateY: 5 }}
+                    style={{ '--skill-color': skill.color }}
                   >
                     <div className="skill-icon">
                       <skill.icon />
                     </div>
                     <div className="skill-info">
                       <h4>{skill.name}</h4>
-                      <div className="skill-bar">
-                        <motion.div
-                          className="skill-progress"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          transition={{ delay: 0.5 + (categoryIndex * 0.2) + (skillIndex * 0.1), duration: 1 }}
-                          viewport={{ once: true }}
-                        ></motion.div>
+                      <div className="proficiency-indicator">
+                        <div className={`proficiency-badge ${skill.proficiency.toLowerCase()}`}>
+                          {skill.proficiency}
+                        </div>
+                        <div className="proficiency-dots">
+                          {skill.proficiency === 'Advanced' && (
+                            <>
+                              <div className="dot active"></div>
+                              <div className="dot active"></div>
+                              <div className="dot active"></div>
+                            </>
+                          )}
+                          {skill.proficiency === 'Intermediate' && (
+                            <>
+                              <div className="dot active"></div>
+                              <div className="dot active"></div>
+                              <div className="dot"></div>
+                            </>
+                          )}
+                          {skill.proficiency === 'Learning' && (
+                            <>
+                              <div className="dot active"></div>
+                              <div className="dot"></div>
+                              <div className="dot"></div>
+                            </>
+                          )}
+                        </div>
                       </div>
-                      <span className="skill-percentage">{skill.level}%</span>
                     </div>
                   </motion.div>
                 ))}

@@ -29,23 +29,9 @@ const Experience = () => {
       achievements: [
         'Maintaining strong academic performance in IT coursework',
         'Completed multiple AI/ML projects including motion detection systems',
-        'Participating in coding competitions and hackathons'
+        'Working on independent coding projects and skill development'
       ],
       technologies: ['Python', 'JavaScript', 'React', 'AI/ML', 'Data Science']
-    },
-    {
-      type: 'education',
-      title: 'Information Technology Program',
-      company: 'Algonquin College',
-      location: 'Ottawa, ON, Canada',
-      period: '2023 - Present',
-      description: 'Concurrent enrollment in practical IT program focusing on hands-on development skills and industry-relevant technologies.',
-      achievements: [
-        'Gaining practical experience in full-stack development',
-        'Working on real-world projects and case studies',
-        'Building portfolio of diverse technical projects'
-      ],
-      technologies: ['Web Development', 'Database Design', 'System Administration', 'Project Management']
     }
   ];
 

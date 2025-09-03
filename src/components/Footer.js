@@ -41,7 +41,7 @@ const Footer = () => {
           >
             <h3>Abdullah Shibib</h3>
             <p>
-              An innovative IT student at Carleton University & Algonquin College, 
+              An innovative IT student at Carleton University, 
               passionate about AI, machine learning, and building exceptional solutions.
             </p>
             <div className="footer-social">

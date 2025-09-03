@@ -52,7 +52,7 @@ const About = () => {
             <h3>Hello! I'm Abdullah Shibib</h3>
             <p>
               I'm an innovative third-year IT student pursuing my education at both Carleton University 
-              and Algonquin College. As a tech enthusiast and problem solver, I'm passionate about 
+              . As a tech enthusiast and problem solver, I'm passionate about 
               leveraging technology to create meaningful solutions.
             </p>
             <p>

@@ -58,50 +58,34 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
     
-    try {
-      // Using a simple form submission service that works immediately
-      const formDataToSend = new FormData();
-      formDataToSend.append('name', formData.name);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('subject', formData.subject);
-      formDataToSend.append('message', formData.message);
-      formDataToSend.append('_to', 'abdullahshibib@yahoo.com');
-      formDataToSend.append('_subject', `Portfolio Contact: ${formData.subject}`);
-      formDataToSend.append('_replyto', formData.email);
-      
-      // Using Formspree with a demo endpoint that works
-      const response = await fetch('https://formspree.io/f/xpzgkqwe', {
-        method: 'POST',
-        body: formDataToSend,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      
-      if (response.ok) {
-        setIsSubmitting(false);
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        
-        // Reset status after 5 seconds
-        setTimeout(() => setSubmitStatus(null), 5000);
-      } else {
-        throw new Error('Form submission failed');
-      }
-      
-    } catch (error) {
-      console.error('Error sending email:', error);
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Portfolio Contact: ${formData.subject}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Subject: ${formData.subject}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    
+    const mailtoLink = `mailto:abdullahshibib@yahoo.com?subject=${subject}&body=${body}`;
+    
+    // Open email client in new tab
+    window.open(mailtoLink, '_blank');
+    
+    // Simulate success after a brief delay
+    setTimeout(() => {
       setIsSubmitting(false);
-      setSubmitStatus('error');
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
       
       // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000);
-    }
+    }, 1000);
   };
 
   return (
@@ -260,7 +244,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  Thank you! Your message has been sent successfully to abdullahshibib@yahoo.com
+                  Thank you! Your email client should open with the message ready to send to abdullahshibib@yahoo.com
                 </motion.div>
               )}
               

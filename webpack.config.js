@@ -34,18 +34,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: 'public/images',
-          to: 'images',
-        },
-        {
-          from: 'public/resume.pdf',
-          to: 'resume.pdf',
-        },
-      ],
-    }),
   ],
   devServer: {
     static: './dist',
