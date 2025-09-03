@@ -19,8 +19,8 @@ const InteractiveMap = () => {
       id: 'baghdad',
       name: 'Baghdad, Iraq',
       description: 'Where I was born',
-      x: 58, // Much further left - Middle East region, not near China/South Asia
-      y: 42,
+      x: 56, // Moved slightly left
+      y: 36.5, // Moved up by 0.5% more
       color: '#dc2626'
     }
   ];
