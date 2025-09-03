@@ -18,20 +18,20 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       title: 'Email',
-      value: 'your.email@example.com',
-      link: 'mailto:your.email@example.com'
+      value: 'abdullahshibib@yahoo.com',
+      link: 'mailto:abdullahshibib@yahoo.com'
     },
     {
       icon: FaMapMarkerAlt,
       title: 'Location',
-      value: 'Your City, Your State, Your Country',
+      value: 'Ottawa, ON, Canada',
       link: null
     },
     {
       icon: FaGithub,
       title: 'GitHub',
-      value: 'github.com/YOUR_USERNAME',
-      link: 'https://github.com/YOUR_USERNAME'
+      value: 'github.com/Abdullah-Shibib',
+      link: 'https://github.com/Abdullah-Shibib'
     }
   ];
 
@@ -39,13 +39,13 @@ const Contact = () => {
     {
       icon: FaGithub,
       name: 'GitHub',
-      url: 'https://github.com/YOUR_USERNAME',
+      url: 'https://github.com/Abdullah-Shibib',
       color: '#333'
     },
     {
       icon: FaLinkedin,
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/YOUR_LINKEDIN_ID/',
+      url: 'https://www.linkedin.com/in/abdullah-shibib-5875a1297/',
       color: '#0077b5'
     }
   ];
@@ -72,7 +72,7 @@ const Contact = () => {
       `Message:\n${formData.message}`
     );
     
-    const mailtoLink = `mailto:your.email@example.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:abdullahshibib@yahoo.com?subject=${subject}&body=${body}`;
     
     // Open email client in new tab
     window.open(mailtoLink, '_blank');
@@ -244,7 +244,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  Thank you! Your email client should open with the message ready to send to your.email@example.com
+                  Thank you! Your email client should open with the message ready to send to abdullahshibib@yahoo.com
                 </motion.div>
               )}
               
@@ -254,7 +254,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  Sorry, there was an error sending your message. Please try again or contact me directly at your.email@example.com
+                  Sorry, there was an error sending your message. Please try again or contact me directly at abdullahshibib@yahoo.com
                 </motion.div>
               )}
             </form>

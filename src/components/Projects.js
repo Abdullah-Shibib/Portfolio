@@ -14,7 +14,7 @@ const Projects = () => {
       image: '/images/motion-detection-purple.png',
       technologies: ['Python', 'OpenCV', 'Computer Vision', 'AI'],
       category: 'ai',
-      github: 'https://github.com/YOUR_USERNAME/Motion-detection-security-system',
+      github: 'https://github.com/Abdullah-Shibib/Motion-detection-security-system',
       live: null,
       featured: true
     },
@@ -25,7 +25,7 @@ const Projects = () => {
       image: '/images/ai-doctor-purple.png',
       technologies: ['JavaScript', 'AI/ML', 'Healthcare', 'NLP'],
       category: 'ai',
-      github: 'https://github.com/YOUR_USERNAME/Personal-AI-Doctor-P.A.I.D',
+      github: 'https://github.com/Abdullah-Shibib/Personal-AI-Doctor-P.A.I.D',
       live: null,
       featured: true
     },
@@ -36,7 +36,7 @@ const Projects = () => {
       image: '/images/ai-trading-bot-purple.png',
       technologies: ['HTML', 'JavaScript', 'AI/ML', 'Trading'],
       category: 'ai',
-      github: 'https://github.com/YOUR_USERNAME/AI-Trading-Bot',
+      github: 'https://github.com/Abdullah-Shibib/AI-Trading-Bot',
       live: null,
       featured: true
     },
@@ -47,7 +47,7 @@ const Projects = () => {
       image: '/images/aim-target.png',
       technologies: ['Python', 'Game Development', 'Analytics'],
       category: 'web',
-      github: 'https://github.com/YOUR_USERNAME/Aim-Training-Simulator',
+      github: 'https://github.com/Abdullah-Shibib/Aim-Training-Simulator',
       live: null,
       featured: false
     },
@@ -58,7 +58,7 @@ const Projects = () => {
       image: '/images/ecommerce-website-purple.png',
       technologies: ['HTML', 'CSS', 'JavaScript', 'E-commerce'],
       category: 'web',
-      github: 'https://github.com/YOUR_USERNAME/Ecommerce-Website',
+      github: 'https://github.com/Abdullah-Shibib/Ecommerce-Website',
       live: null,
       featured: false
     },
@@ -69,7 +69,7 @@ const Projects = () => {
       image: '/images/legalytics-app.png',
       technologies: ['Data Analytics', 'Visualization', 'Legal Tech'],
       category: 'web',
-      github: 'https://github.com/YOUR_USERNAME/Ligalytics-app-',
+      github: 'https://github.com/Abdullah-Shibib/Ligalytics-app-',
       live: null,
       featured: false
     }
