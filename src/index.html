@@ -53,9 +53,9 @@
         setTimeout(() => {
             const root = document.getElementById('root');
             if (root && root.innerHTML.includes('Loading Portfolio')) {
-                root.innerHTML = '<div style="padding: 20px; text-align: center;"><h1>Portfolio Loading...</h1><p>If this message persists, please refresh the page.</p></div>';
+                root.innerHTML = '<div style="padding: 20px; text-align: center; color: red;"><h1>React Failed to Load</h1><p>Check console for errors. If this message persists, please refresh the page.</p></div>';
             }
-        }, 10000);
+        }, 5000);
     </script>
 </body>
 </html>
