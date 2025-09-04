@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdullah Shibib - Portfolio</title>
-    <meta name="description" content="Abdullah Shibib's Portfolio - Innovative IT Student">
+    <meta name="description" content="Abdullah Shibib's Portfolio - Software Engineer at Ericsson">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,11 +18,13 @@
         }
         #root {
             min-height: 100vh;
-            padding: 20px;
         }
-        .test-content {
-            text-align: center;
-            padding: 40px;
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
         }
         .spinner {
             border: 4px solid #f3f3f3;
@@ -31,7 +33,7 @@
             width: 40px;
             height: 40px;
             animation: spin 2s linear infinite;
-            margin: 20px auto;
+            margin-bottom: 20px;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -41,28 +43,19 @@
 </head>
 <body>
     <div id="root">
-        <div class="test-content">
-            <h1>Portfolio Test - HTML Working!</h1>
-            <p>If you can see this, the basic HTML is loading correctly.</p>
-            <p>Time: <span id="time"></span></p>
+        <div class="loading">
             <div class="spinner"></div>
-            <p>Loading React...</p>
+            <p>Loading Portfolio...</p>
         </div>
     </div>
     <script>
-        // Update time
-        document.getElementById('time').textContent = new Date().toLocaleString();
-        
-        // Test if bundle.js loads
-        console.log('Testing bundle.js loading...');
-        
         // Fallback if React doesn't load
         setTimeout(() => {
             const root = document.getElementById('root');
-            if (root && root.innerHTML.includes('Loading React')) {
-                root.innerHTML = '<div style="padding: 20px; text-align: center; color: red;"><h1>React Bundle Failed to Load</h1><p>Bundle.js is not loading properly. Check network tab for errors.</p><p>Time: ' + new Date().toLocaleString() + '</p></div>';
+            if (root && root.innerHTML.includes('Loading Portfolio')) {
+                root.innerHTML = '<div style="padding: 20px; text-align: center; color: red;"><h1>Portfolio Loading...</h1><p>If this message persists, please refresh the page.</p></div>';
             }
-        }, 3000);
+        }, 10000);
     </script>
 </body>
 </html>

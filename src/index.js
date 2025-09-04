@@ -1,21 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import App from './App';
+import './styles/global.css';
 
-// Simple test component first
-function TestApp() {
-  return (
-    <div style={{
-      padding: '20px',
-      color: 'white',
-      backgroundColor: '#1a0b1f',
-      minHeight: '100vh',
-      fontFamily: 'Arial, sans-serif'
-    }}>
-      <h1>Portfolio Test - React is Working!</h1>
-      <p>If you can see this, React is loading correctly.</p>
-      <p>Time: {new Date().toLocaleString()}</p>
-    </div>
-  );
+// Add error boundary for debugging
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ 
+          padding: '20px', 
+          color: 'white', 
+          backgroundColor: '#1a0b1f',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <h1>Something went wrong</h1>
+          <p>Error: {this.state.error?.message}</p>
+          <button onClick={() => window.location.reload()}>Reload Page</button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
 }
 
 console.log('React app starting...');
@@ -28,7 +52,13 @@ if (!rootElement) {
 } else {
   try {
     const root = ReactDOM.createRoot(rootElement);
-    root.render(<TestApp />);
+    root.render(
+      <React.StrictMode>
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
+      </React.StrictMode>
+    );
     console.log('React app rendered successfully!');
   } catch (error) {
     console.error('Error rendering React app:', error);
