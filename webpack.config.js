@@ -8,7 +8,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     clean: true,
+    publicPath: '/',
   },
+  mode: 'production',
   module: {
     rules: [
       {
@@ -17,7 +19,10 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: [
+              ['@babel/preset-env', { targets: { browsers: ['last 2 versions'] } }],
+              ['@babel/preset-react', { runtime: 'automatic' }]
+            ],
           },
         },
       },
@@ -37,6 +42,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      inject: true,
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -48,12 +54,10 @@ module.exports = {
       ]
     }),
   ],
-  devServer: {
-    static: './dist',
-    port: 3000,
-    hot: true,
-  },
   resolve: {
     extensions: ['.js', '.jsx'],
+  },
+  optimization: {
+    minimize: true,
   },
 };
